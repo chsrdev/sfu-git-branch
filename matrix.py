@@ -2,8 +2,8 @@ from random import randint
 
 class Matrix:
     def __init__(self, width: int, height: int):
-        if width < 0 or height < 0:
-            raise ValueError("Размер матрицы не может быть отрицательным")
+        if width <= 0 or height <= 0:
+            raise ValueError("Размер матрицы не может быть отрицательным или нулевым")
 
         self._width = width
         self._height = height
@@ -31,3 +31,12 @@ class Matrix:
         for i in range(self._height):
             for j in range(self._width):
                 self._matrix[i][j] = randint(0, 100)
+
+    def __str__(self) -> str:
+        max_len = max(len(str(num)) for row in self._matrix for num in row)
+        lines = []
+        for row in self._matrix:
+            formatted_row = " ".join(f"{num:<{max_len}}" for num in row)
+            lines.append(formatted_row)
+
+        return "\n".join(lines)
