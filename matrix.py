@@ -48,3 +48,10 @@ class Matrix:
             if any(n == 10 for n in self._matrix[i]):
                 res.append(i+1)
         return res
+
+    def function_18(self):
+        """Меняет местами первую и последнюю строку."""
+        self._matrix[0], self._matrix[self._height - 1] = (
+            self._matrix[self._height - 1].copy(),
+            self._matrix[0].copy()
+        )
