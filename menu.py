@@ -105,7 +105,9 @@ def functions_menu():
                 else:
                     print("Нет строк, в которых хотя бы один элемент равен 10.")
             case "b":
-                ...
+                matrix.function_18()
+                print("Результат:")
+                print(matrix)
             case "c":
                 ...
             case "d":
