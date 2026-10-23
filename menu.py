@@ -1,4 +1,6 @@
-import array
+from matrix import Matrix
+
+matrix: Matrix
 
 
 def main_menu():
@@ -20,7 +22,7 @@ def main_menu():
                     except ValueError as e:
                         print(f"Ошибка: {e}")
 
-                    array.set_size(width, height)
+                    matrix = Matrix(width, height)
                 case "2":
                     create_menu()
                 case "3":
