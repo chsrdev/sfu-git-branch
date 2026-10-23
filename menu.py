@@ -47,7 +47,7 @@ def input_array():
         for j in range(matrix.get_width()):
             while True:
                 try:
-                    num = int(input(f"{i} строчка, {j} столбец | Число: "))
+                    num = int(input(f"{i+1} строчка, {j+1} столбец | Число: "))
                     matrix.set_number(i, j, num)
                     break
                 except (ValueError, IndexError) as e:
