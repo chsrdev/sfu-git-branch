@@ -1,41 +1,65 @@
 from matrix import Matrix
 
-matrix: Matrix
+matrix: Matrix = None
 
 
 def main_menu():
-    while True:
-            action = input("1. Ввод размера массива\n"
-                        "2. Создание массива\n"
-                        "3. Просмотр созданного массива\n"
-                        "4. Выполнение функций\n"
-                        "5. Выход\n"
-                        "Выберите действие: ")
-    
-            match action:
-                case "1":
-                    try:
-                        width = int(input("Ширина двумерного массива: "))
-                        height = int(input("Высота двумерного массива: "))
-                        if width < 0 or height < 0:
-                            print("Ширина и высота массива не могут быть меньше нуля.")
-                    except ValueError as e:
-                        print(f"Ошибка: {e}")
+    global matrix 
 
-                    matrix = Matrix(width, height)
-                case "2":
-                    create_menu()
-                case "3":
-                    ...
-                case "4":
-                    functions_menu()
-                case "5":
+    while True:
+        action = input("1. Ввод размера массива\n"
+                    "2. Создание массива\n"
+                    "3. Просмотр созданного массива\n"
+                    "4. Выполнение функций\n"
+                    "5. Выход\n"
+                    "Выберите действие: ")
+
+        match action:
+            case "1":
+                try:
+                    width = int(input("Ширина двумерного массива: "))
+                    height = int(input("Высота двумерного массива: "))
+                    if width < 0 or height < 0:
+                        print("Ширина и высота массива не могут быть меньше нуля.")
+                except ValueError as e:
+                    print(f"Ошибка: {e}")
+
+                matrix = Matrix(width, height)
+            case "2":
+                create_menu()
+            case "3":
+                ...
+            case "4":
+                functions_menu()
+            case "5":
+                break
+            case _:
+                print("Введено некорректное действие")
+
+
+def input_array():
+    global matrix
+
+    for i in range(matrix.get_height()):
+        for j in range(matrix.get_width()):
+            while True:
+                try:
+                    num = int(input(f"{i} строчка, {j} столбец | Число: "))
+                    matrix.set_number(i, j, num)
                     break
-                case _:
-                    print("Введено некорректное действие")
+                except ValueError:
+                    print("Ошибка: Введите число")
+                except IndexError as e:
+                    print(f"Ошибка: {e}")
 
 
 def create_menu():
+    global matrix
+
+    if not matrix:
+        print("Сначала укажите размер матрицы")
+        return
+    
     while True:
         action = input("Создание массива\n"
                        "1. Вручную\n"
@@ -45,7 +69,7 @@ def create_menu():
 
         match action:
             case "1":
-                ...
+                input_array()
             case "2":
                 ...
             case "3":
