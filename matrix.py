@@ -40,3 +40,11 @@ class Matrix:
             lines.append(formatted_row)
 
         return "\n".join(lines)
+
+    def function_16(self) -> list[int]:
+        """Возвращает номера тех строк массива, в которых есть хотя бы один элемент, равный 10."""
+        res = []
+        for i in range(len(self._matrix)):
+            if any(n == 10 for n in self._matrix[i]):
+                res.append(i+1)
+        return res
