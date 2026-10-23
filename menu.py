@@ -1,3 +1,6 @@
+import array
+
+
 def main_menu():
     while True:
             action = input("1. Ввод размера массива\n"
@@ -9,7 +12,15 @@ def main_menu():
     
             match action:
                 case "1":
-                    ...
+                    try:
+                        width = int(input("Ширина двумерного массива: "))
+                        height = int(input("Высота двумерного массива: "))
+                        if width < 0 or height < 0:
+                            print("Ширина и высота массива не могут быть меньше нуля.")
+                    except ValueError as e:
+                        print(f"Ошибка: {e}")
+
+                    array.set_size(width, height)
                 case "2":
                     create_menu()
                 case "3":
