@@ -19,12 +19,9 @@ def main_menu():
                 try:
                     width = int(input("Ширина двумерного массива: "))
                     height = int(input("Высота двумерного массива: "))
-                    if width < 0 or height < 0:
-                        print("Ширина и высота массива не могут быть меньше нуля.")
+                    matrix = Matrix(width, height)
                 except ValueError as e:
                     print(f"Ошибка: {e}")
-
-                matrix = Matrix(width, height)
             case "2":
                 create_menu()
             case "3":
