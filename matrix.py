@@ -60,3 +60,7 @@ class Matrix:
         """Меняет местами первый и последний столбец."""
         for row in self._matrix:
             row[0], row[-1] = row[-1], row[0]
+
+    def function_22(self):
+        """Возвращает сумму всех четных элементов двумерного массива целых чисел."""
+        return sum(n for row in self._matrix for n in row if n % 2 == 0)

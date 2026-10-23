@@ -113,7 +113,7 @@ def functions_menu():
                 print("Результат:")
                 print(matrix)
             case "d":
-                ...
+                print("Результат:", matrix.function_22())
             case "e":
                 ...
             case "f":
