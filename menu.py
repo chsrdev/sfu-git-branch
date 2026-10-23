@@ -28,7 +28,10 @@ def main_menu():
             case "2":
                 create_menu()
             case "3":
-                ...
+                if not matrix:
+                    print("Сначала задайте размеры массива")
+                    continue
+                print(matrix)
             case "4":
                 functions_menu()
             case "5":
@@ -55,7 +58,7 @@ def create_menu():
     global matrix
 
     if not matrix:
-        print("\nСначала укажите размер матрицы")
+        print("\nСначала укажите размеры массива")
         return
     
     while True:
