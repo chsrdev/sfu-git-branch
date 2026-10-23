@@ -23,13 +23,19 @@ def main_menu():
                 except ValueError as e:
                     print(f"Ошибка: {e}")
             case "2":
+                if matrix is None:
+                    print("\nСначала укажите размеры массива")
+                    continue
                 create_menu()
             case "3":
-                if not matrix:
+                if matrix is None:
                     print("Сначала задайте размеры массива")
                     continue
                 print(matrix)
             case "4":
+                if matrix is None:
+                    print("Сначала задайте размеры массива")
+                    continue
                 functions_menu()
             case "5":
                 break
@@ -53,10 +59,6 @@ def input_array():
 
 def create_menu():
     global matrix
-
-    if not matrix:
-        print("\nСначала укажите размеры массива")
-        return
     
     while True:
         action = input("\nСоздание массива\n"
