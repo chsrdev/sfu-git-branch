@@ -55,3 +55,8 @@ class Matrix:
             self._matrix[self._height - 1].copy(),
             self._matrix[0].copy()
         )
+
+    def function_19(self):
+        """Меняет местами первый и последний столбец."""
+        for row in self._matrix:
+            row[0], row[-1] = row[-1], row[0]

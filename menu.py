@@ -109,7 +109,9 @@ def functions_menu():
                 print("Результат:")
                 print(matrix)
             case "c":
-                ...
+                matrix.function_19()
+                print("Результат:")
+                print(matrix)
             case "d":
                 ...
             case "e":
