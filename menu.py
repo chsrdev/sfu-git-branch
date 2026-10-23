@@ -1,0 +1,125 @@
+from matrix import Matrix
+
+matrix: Matrix = None
+
+
+def main_menu():
+    global matrix 
+
+    while True:
+        action = input("\n1. Ввод размера массива\n"
+                    "2. Создание массива\n"
+                    "3. Просмотр созданного массива\n"
+                    "4. Выполнение функций\n"
+                    "5. Выход\n"
+                    "Выберите действие: ")
+
+        match action:
+            case "1":
+                try:
+                    width = int(input("Ширина двумерного массива: "))
+                    height = int(input("Высота двумерного массива: "))
+                    matrix = Matrix(width, height)
+                except ValueError as e:
+                    print(f"Ошибка: {e}")
+            case "2":
+                if matrix is None:
+                    print("\nСначала укажите размеры массива")
+                    continue
+                create_menu()
+            case "3":
+                if matrix is None:
+                    print("Сначала задайте размеры массива")
+                    continue
+                print(matrix)
+            case "4":
+                if matrix is None:
+                    print("Сначала задайте размеры массива")
+                    continue
+                functions_menu()
+            case "5":
+                break
+            case _:
+                print("Введено некорректное действие")
+
+
+def input_array():
+    global matrix
+
+    for i in range(matrix.height):
+        for j in range(matrix.width):
+            while True:
+                try:
+                    num = int(input(f"{i+1} строчка, {j+1} столбец | Число: "))
+                    matrix.set_number(i, j, num)
+                    break
+                except (ValueError, IndexError) as e:
+                    print(f"Ошибка: {e}")
+
+
+def create_menu():
+    global matrix
+    
+    while True:
+        action = input("\nСоздание массива\n"
+                       "1. Вручную\n"
+                       "2. Автоматически\n"
+                       "3. Назад\n"
+                       "Выберите действие: ")
+
+        match action:
+            case "1":
+                input_array()
+                print("Массив заполнен")
+            case "2":
+                matrix.fill_random()
+                print("Массив заполнен")
+            case "3":
+                break
+            case _:
+                print("Введено некорректное действие")
+
+
+def functions_menu():
+    while True:
+        action = input("\nВыполнение функций\n"
+                       "a. Функция 16\n"
+                       "Вывести номера тех строк массива, в которых есть хотя бы один элемент, равный 10.\n"
+                       "b. Функция 18\n"
+                       "Поменять местами первую и последнюю строку.\n"
+                       "c. Функция 19\n"
+                       "Поменять местами первый и последний столбец.\n"
+                       "d. Функция 22\n"
+                       "Найти сумму всех четных элементов двумерного массива целых чисел.\n"
+                       "e. Функция 28\n"
+                       "Найти все неповторяющиеся элементы двумерного массива целых чисел.\n"
+                       "f. Назад\n"
+                       "Выберите действие: ")
+
+        match action:
+            case "a":
+                res = matrix.function_16()
+                if res:
+                    print("Результат:", *res)
+                else:
+                    print("Нет строк, в которых хотя бы один элемент равен 10.")
+            case "b":
+                matrix.function_18()
+                print("Результат:")
+                print(matrix)
+            case "c":
+                matrix.function_19()
+                print("Результат:")
+                print(matrix)
+            case "d":
+                print("Результат:", matrix.function_22())
+            case "e":
+                res = matrix.function_28()
+                if res:
+                    print("Уникальные числа:", *res)
+                else:
+                    print("Нет уникальных чисел")
+            case "f":
+                break
+            case _:
+                print("Введено некорректное действие")
