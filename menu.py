@@ -47,9 +47,7 @@ def input_array():
                     num = int(input(f"{i} строчка, {j} столбец | Число: "))
                     matrix.set_number(i, j, num)
                     break
-                except ValueError:
-                    print("Ошибка: Введите число")
-                except IndexError as e:
+                except (ValueError, IndexError) as e:
                     print(f"Ошибка: {e}")
 
 

@@ -3,7 +3,7 @@ from random import randint
 class Matrix:
     def __init__(self, width: int, height: int):
         if width < 0 or height < 0:
-            return
+            raise ValueError("Размер матрицы не может быть отрицательным")
 
         self._width = width
         self._height = height
