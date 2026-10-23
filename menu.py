@@ -43,8 +43,8 @@ def main_menu():
 def input_array():
     global matrix
 
-    for i in range(matrix.get_height()):
-        for j in range(matrix.get_width()):
+    for i in range(matrix.height):
+        for j in range(matrix.width):
             while True:
                 try:
                     num = int(input(f"{i+1} строчка, {j+1} столбец | Число: "))
