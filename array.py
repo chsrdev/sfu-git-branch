@@ -1,11 +1,9 @@
-matrix: list[list[int]] = []
+class Matrix:
+    def __init__(self, width: int, height: int):
+        if width < 0 or height < 0:
+            return
 
-
-def set_size(width: int, height: int):
-    global matrix
-
-    if width < 0 or height < 0:
-        return
-    
-    matrix = [[0 for _ in range(width)] for _ in range(height)]
-    print(matrix)
+        self._width = width
+        self._height = height
+        self.matrix = [[0 for _ in range(width)] for _ in range(height)]
+        print(self.matrix)
