@@ -99,7 +99,11 @@ def functions_menu():
 
         match action:
             case "a":
-                ...
+                res = matrix.function_16()
+                if res:
+                    print("Результат:", *res)
+                else:
+                    print("Нет строк, в которых хотя бы один элемент равен 10.")
             case "b":
                 ...
             case "c":
