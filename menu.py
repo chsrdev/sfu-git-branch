@@ -7,7 +7,7 @@ def main_menu():
     global matrix 
 
     while True:
-        action = input("1. Ввод размера массива\n"
+        action = input("\n1. Ввод размера массива\n"
                     "2. Создание массива\n"
                     "3. Просмотр созданного массива\n"
                     "4. Выполнение функций\n"
@@ -57,11 +57,11 @@ def create_menu():
     global matrix
 
     if not matrix:
-        print("Сначала укажите размер матрицы")
+        print("\nСначала укажите размер матрицы")
         return
     
     while True:
-        action = input("Создание массива\n"
+        action = input("\nСоздание массива\n"
                        "1. Вручную\n"
                        "2. Автоматически\n"
                        "3. Назад\n"
@@ -70,8 +70,10 @@ def create_menu():
         match action:
             case "1":
                 input_array()
+                print("Массив заполнен")
             case "2":
-                ...
+                matrix.fill_random()
+                print("Массив заполнен")
             case "3":
                 break
             case _:
@@ -80,7 +82,7 @@ def create_menu():
 
 def functions_menu():
     while True:
-        action = input("Выполнение функций\n"
+        action = input("\nВыполнение функций\n"
                        "a. Функция 16\n"
                        "Вывести номера тех строк массива, в которых есть хотя бы один элемент, равный 10.\n"
                        "b. Функция 18\n"
