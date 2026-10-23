@@ -1,4 +1,5 @@
 from random import randint
+from collections import Counter
 
 class Matrix:
     def __init__(self, width: int, height: int):
@@ -64,3 +65,9 @@ class Matrix:
     def function_22(self):
         """Возвращает сумму всех четных элементов двумерного массива целых чисел."""
         return sum(n for row in self._matrix for n in row if n % 2 == 0)
+
+    def function_28(self) -> list[int]:
+        """Возвращает все неповторяющиеся элементы двумерного массива целых чисел."""
+        numbers = [num for row in self._matrix for num in row]
+        counts = Counter(numbers)
+        return [num for num, count in counts.items() if count == 1]

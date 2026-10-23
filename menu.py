@@ -115,9 +115,12 @@ def functions_menu():
             case "d":
                 print("Результат:", matrix.function_22())
             case "e":
-                ...
+                res = matrix.function_28()
+                if res:
+                    print("Уникальные числа:", *res)
+                else:
+                    print("Нет уникальных чисел")
             case "f":
                 break
             case _:
                 print("Введено некорректное действие")
-        
